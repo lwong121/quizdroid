@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 
 class QuestionActivity : AppCompatActivity() {
@@ -65,5 +66,22 @@ class QuestionActivity : AppCompatActivity() {
             intent.putExtra(SELECTION_OPTION_EXTRA, selectedAnswer)
             context.startActivity(intent)
         }
+
+        // extra credit
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finish()
+                val targetActivity = when (currentQuestionNum) {
+                    // 1. back button on first question takes you to topic list page, not topic overview page
+                    0 -> MainActivity::class.java
+                    // 2. back button takes you to previous question page, not answer page
+                    else -> QuestionActivity::class.java
+                }
+                val intent = Intent(this@QuestionActivity, targetActivity)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
     }
 }
