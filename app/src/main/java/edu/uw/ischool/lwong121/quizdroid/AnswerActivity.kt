@@ -78,7 +78,8 @@ class AnswerActivity : AppCompatActivity() {
         // handle next question or finish quiz + update score at the top of the page
         val btnNext = findViewById<Button>(R.id.aPageBtnNext)
         if (currentQuestionNum + 1 < questions.size) {
-            score.text = "You have $numCorrectAnswers out of ${currentQuestionNum + 1} correct"
+            // next question
+            score.text = "You have $numCorrectAnswers out of ${currentQuestionNum + 1} correct so far."
 
             btnNext.text = getString(R.string.next_btn)
             btnNext.setOnClickListener {
@@ -91,7 +92,8 @@ class AnswerActivity : AppCompatActivity() {
                 context.startActivity(intent)
             }
         } else {
-            score.text = "You have reached the end of the quiz.\nYou got $numCorrectAnswers out of ${currentQuestionNum + 1} correct!"
+            // quiz is over
+            score.text = "Great job! You have reached the end of the quiz.\nYou got $numCorrectAnswers out of ${currentQuestionNum + 1} correct!"
 
             btnNext.text = getString(R.string.finish_btn)
             btnNext.setOnClickListener {

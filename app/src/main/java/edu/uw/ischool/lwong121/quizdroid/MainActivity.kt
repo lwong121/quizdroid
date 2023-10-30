@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         // create list of topics to take the quiz on
         val topicsListView = findViewById<ListView>(R.id.listViewTopics)
 
-//        topicsListView.adapter = TopicAdapter(this, topicLabels)
         topicsListView.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, topicLabels)
 
         topicsListView.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->

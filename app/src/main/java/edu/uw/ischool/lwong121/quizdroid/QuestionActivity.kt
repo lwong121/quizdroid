@@ -74,7 +74,7 @@ class QuestionActivity : AppCompatActivity() {
                 val targetActivity = when (currentQuestionNum) {
                     // 1. back button on first question takes you to topic list page, not topic overview page
                     0 -> MainActivity::class.java
-                    // 2. back button takes you to previous question page, not answer page
+                    // 2. back button on any other question takes you to previous question page, not previous answer page
                     else -> QuestionActivity::class.java
                 }
                 val intent = Intent(this@QuestionActivity, targetActivity)

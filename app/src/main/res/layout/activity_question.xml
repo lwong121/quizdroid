@@ -30,25 +30,25 @@
             android:layout_height="wrap_content">
 
             <RadioButton
-                style="@style/p"
+                style="@style/answerOption"
                 android:id="@+id/qPageOption1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <RadioButton
-                style="@style/p"
+                style="@style/answerOption"
                 android:id="@+id/qPageOption2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <RadioButton
-                style="@style/p"
+                style="@style/answerOption"
                 android:id="@+id/qPageOption3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <RadioButton
-                style="@style/p"
+                style="@style/answerOption"
                 android:id="@+id/qPageOption4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

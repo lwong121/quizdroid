@@ -25,7 +25,7 @@ class OverviewActivity : AppCompatActivity() {
 
         // add event listener to button
         val btnBegin = findViewById<Button>(R.id.btnBegin)
-        btnBegin.setOnClickListener { it ->
+        btnBegin.setOnClickListener {
             val context = it.context
             val intent = Intent(context, QuestionActivity::class.java)
             intent.putExtra(TOPIC_EXTRA, selectedTopic)

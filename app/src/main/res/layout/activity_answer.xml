@@ -22,15 +22,13 @@
             style="@style/questionNum"
             android:id="@+id/aPageQuestionCount"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="wrap_content" />
 
         <TextView
             style="@style/h2"
             android:id="@+id/aPageQuestion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="wrap_content" />
 
         <RadioGroup
             android:id="@+id/aPageRadioGroup"
@@ -39,25 +37,25 @@
 
             <RadioButton
                 android:id="@+id/aPageOption1"
-                style="@style/p"
+                style="@style/answerOption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <RadioButton
                 android:id="@+id/aPageOption2"
-                style="@style/p"
+                style="@style/answerOption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <RadioButton
                 android:id="@+id/aPageOption3"
-                style="@style/p"
+                style="@style/answerOption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <RadioButton
                 android:id="@+id/aPageOption4"
-                style="@style/p"
+                style="@style/answerOption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </RadioGroup>

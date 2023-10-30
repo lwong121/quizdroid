@@ -73,10 +73,22 @@ private val hpQuestions = listOf(
 )
 
 // TOPICS
-val mathTopic = Topic(MATH, "This quiz will test you on some basic math knowledge and test your problem-solving abilities. Good luck!\n\nTotal Questions: ${mathQuestions.size}", mathQuestions)
+val mathTopic = Topic(
+    MATH,
+    "This quiz will test you on some basic math knowledge and test your problem-solving abilities. Good luck!\n\nTotal Questions: ${mathQuestions.size}",
+    mathQuestions)
 
-val physicsTopic = Topic(PHYSICS, "This quiz will test you on some physics fundamentals. Good luck!\n\nTotal Questions: ${physicsQuestions.size}", physicsQuestions)
+val physicsTopic = Topic(
+    PHYSICS,
+    "This quiz will test you on some physics fundamentals and test your problem-solving abilities. Good luck!\n\nTotal Questions: ${physicsQuestions.size}",
+    physicsQuestions)
 
-val marvelTopic = Topic(MARVEL, "This quiz will test your knowledge of the Marvel Universe and the super heroes that work to protect it. Good luck!\n\nTotal Questions: ${marvelQuestions.size}", marvelQuestions)
+val marvelTopic = Topic(
+    MARVEL,
+    "This quiz will test your knowledge of the Marvel Universe and the super heroes that work to protect it. Good luck!\n\nTotal Questions: ${marvelQuestions.size}",
+    marvelQuestions)
 
-val hpTopic = Topic(HP, "This quiz will test you on your knowledge of the Harry Potter series and the wizarding realm. Good luck!\n\nTotal Questions: ${hpQuestions.size}", hpQuestions)
+val hpTopic = Topic(
+    HP,
+    "This quiz will test you on your knowledge of the Harry Potter series and the wizarding realm. Good luck!\n\nTotal Questions: ${hpQuestions.size}",
+    hpQuestions)
