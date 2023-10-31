@@ -23,14 +23,14 @@ class QuestionActivity : AppCompatActivity() {
         val questionText = findViewById<TextView>(R.id.qPageQuestion)
 
         val selectedTopic = intent?.extras?.getSerializable(TOPIC_EXTRA) as Topic
-        var currentQuestionNum = intent?.extras?.getInt(QUESTION_NUM_EXTRA) as Int
+        val currentQuestionNum = intent?.extras?.getInt(QUESTION_NUM_EXTRA) as Int
         val numCorrectAnswers = intent?.extras?.getInt(CORRECT_NUM_EXTRA) as Int
 
         val questions = selectedTopic.questions
         val currentQuestion = questions[currentQuestionNum]
         Log.i(TAG, "QuestionActivity Topic.questions: $currentQuestion")
 
-        questionCount.text = "Question ${(currentQuestionNum + 1)} of ${questions.size}"
+        questionCount.text = getString(R.string.question_count, currentQuestionNum + 1, questions.size)
         questionText.text = currentQuestion.question
 
         // add the answer options

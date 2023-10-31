@@ -18,14 +18,14 @@ class AnswerActivity : AppCompatActivity() {
         val questionText = findViewById<TextView>(R.id.aPageQuestion)
 
         val selectedTopic = intent?.extras?.getSerializable(TOPIC_EXTRA) as Topic
-        var selectedOptionNum = intent?.extras?.getInt(SELECTION_OPTION_EXTRA) as Int
+        val selectedOptionNum = intent?.extras?.getInt(SELECTION_OPTION_EXTRA) as Int
         var currentQuestionNum = intent?.extras?.getInt(QUESTION_NUM_EXTRA) as Int
 
         val questions = selectedTopic.questions
         val currentQuestion = questions[currentQuestionNum]
         Log.i(TAG, "AnswerActivity Topic.questions: $currentQuestion")
 
-        questionCount.text = "Question ${(currentQuestionNum + 1)} of ${questions.size}"
+        questionCount.text = getString(R.string.question_count, currentQuestionNum + 1, questions.size)
         questionText.text = currentQuestion.question
 
         // add the answer options
@@ -39,10 +39,10 @@ class AnswerActivity : AppCompatActivity() {
         option3.text = currentQuestion.options[2]
         option4.text = currentQuestion.options[3]
 
-        option1.isEnabled = false;
-        option2.isEnabled = false;
-        option3.isEnabled = false;
-        option4.isEnabled = false;
+        option1.isEnabled = false
+        option2.isEnabled = false
+        option3.isEnabled = false
+        option4.isEnabled = false
 
         // determine whether selected option is correct + mark which are correct/incorrect
         val selectedOption = when (selectedOptionNum) {
@@ -79,7 +79,7 @@ class AnswerActivity : AppCompatActivity() {
         val btnNext = findViewById<Button>(R.id.aPageBtnNext)
         if (currentQuestionNum + 1 < questions.size) {
             // next question
-            score.text = "You have $numCorrectAnswers out of ${currentQuestionNum + 1} correct so far."
+            score.text = getString(R.string.current_score, numCorrectAnswers, currentQuestionNum + 1)
 
             btnNext.text = getString(R.string.next_btn)
             btnNext.setOnClickListener {
@@ -93,7 +93,7 @@ class AnswerActivity : AppCompatActivity() {
             }
         } else {
             // quiz is over
-            score.text = "Great job! You have reached the end of the quiz.\nYou got $numCorrectAnswers out of ${currentQuestionNum + 1} correct!"
+            score.text = getString(R.string.final_score, numCorrectAnswers, currentQuestionNum + 1)
 
             btnNext.text = getString(R.string.finish_btn)
             btnNext.setOnClickListener {

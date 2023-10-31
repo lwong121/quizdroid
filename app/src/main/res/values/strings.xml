@@ -9,5 +9,9 @@
     <string name="next_btn">Next</string>
     <string name="finish_btn">Finish</string>
 
+    <string name="question_count">Question %d of %d</string>
+    <string name="current_score">You have %d out of %d correct so far.</string>
+    <string name="final_score">Great job! You have reached the end of the quiz.\nYou got %d out of %d correct!</string>
+
     <string name="next_finish_btn_description">Next button if there are more questions, Finish button if last question is reached.</string>
 </resources>
