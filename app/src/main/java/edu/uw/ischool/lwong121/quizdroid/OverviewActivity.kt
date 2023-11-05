@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -13,7 +14,8 @@ class OverviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_overview)
 
-        // add the topic title and description
+        // add the topic image, title, and description
+        val image = findViewById<ImageView>(R.id.overviewImage)
         val title = findViewById<TextView>(R.id.topic)
         val description = findViewById<TextView>(R.id.description)
 
@@ -21,6 +23,7 @@ class OverviewActivity : AppCompatActivity() {
         val selectedTopic = QuizApp.getInstance().getTopicRepository().getTopic(selectedTopicIndex)
         Log.i(TAG, "OverviewActivity Topic: $selectedTopic")
 
+        image.setImageResource(selectedTopic.iconId)
         title.text = selectedTopic.title
         description.text = "${selectedTopic.longDescription} ${getString(R.string.common_description_msg)} ${selectedTopic.questions.size}"
 

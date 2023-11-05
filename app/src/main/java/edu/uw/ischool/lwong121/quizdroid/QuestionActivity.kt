@@ -23,15 +23,15 @@ class QuestionActivity : AppCompatActivity() {
         val questionText = findViewById<TextView>(R.id.qPageQuestion)
 
         val selectedTopicIndex = intent?.extras?.getInt(TOPIC_INDEX_EXTRA) as Int
-        val selectedTopic = QuizApp.getInstance().getTopicRepository().getTopic(selectedTopicIndex)
+        val topicRepository = QuizApp.getInstance().getTopicRepository()
+        val selectedTopic = topicRepository.getTopic(selectedTopicIndex)
         val currentQuestionNum = intent?.extras?.getInt(QUESTION_NUM_EXTRA) as Int
         val numCorrectAnswers = intent?.extras?.getInt(CORRECT_NUM_EXTRA) as Int
 
-        val questions = selectedTopic.questions
-        val currentQuestion = questions[currentQuestionNum]
-        Log.i(TAG, "QuestionActivity Topic.questions: $currentQuestion")
+        val currentQuestion = topicRepository.getQuiz(selectedTopicIndex, currentQuestionNum)
+        Log.i(TAG, "QuestionActivity current question: $currentQuestion")
 
-        questionCount.text = getString(R.string.question_count, currentQuestionNum + 1, questions.size)
+        questionCount.text = getString(R.string.question_count, currentQuestionNum + 1, selectedTopic.questions.size)
         questionText.text = currentQuestion.question
 
         // add the answer options

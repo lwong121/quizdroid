@@ -1,21 +1,24 @@
 package edu.uw.ischool.lwong121.quizdroid
 
-import java.io.Serializable
-
 interface TopicRepository {
     fun getTopics(): List<Topic>
     fun getTopic(topicIndex: Int): Topic
+    fun getQuiz(topicIndex: Int, quizIndex: Int): Quiz
+
+    // These are not used for HW 8, but they do have unit tests as part of the extra credit
+    fun saveTopic(newTopic: Topic)
+    fun saveQuiz(topicIndex: Int, newQuiz: Quiz)
 }
 
-data class Topic(var title: String, var shortDescription: String, var longDescription: String, var questions: List<Quiz>) : Serializable
+data class Topic(var title: String, var shortDescription: String, var longDescription: String, var questions: MutableList<Quiz>, var iconId: Int)
 
-data class Quiz(var question: String, var options: List<String>, var correctAnswer: Int) : Serializable
+data class Quiz(var question: String, var options: List<String>, var correctAnswer: Int)
 
 class TopicRepositoryImpl : TopicRepository {
-    private var topics: List<Topic>
+    private var topics: MutableList<Topic>
 
     init {
-        val mathQuestions = listOf(
+        val mathQuestions = mutableListOf(
             Quiz("What is x in the equation 3x - 8 = 16?",
                 listOf("x = 8", "x = 6", "x = 12", "x = 7"), 0),
             Quiz("What is the sum of the angles in a triangle?",
@@ -24,7 +27,7 @@ class TopicRepositoryImpl : TopicRepository {
                 listOf("48 square units", "14 square units", "30 square units", "56 square units"), 0)
         )
 
-        val physicsQuestions = listOf(
+        val physicsQuestions = mutableListOf(
             Quiz("What is the SI unit of force?",
                 listOf("Watts", "Volts", "Newtons", "Joules"), 2),
             Quiz("When an object is in free fall, what is the acceleration due to gravity?",
@@ -38,7 +41,7 @@ class TopicRepositoryImpl : TopicRepository {
                 1)
         )
 
-        val marvelQuestions = listOf(
+        val marvelQuestions = mutableListOf(
             Quiz("Who is known as the \"God of Thunder\"?",
                 listOf("Iron Man", "Spider-Man", "Captain America", "Thor"), 3),
             Quiz("What is Iron Man's real name?",
@@ -47,7 +50,7 @@ class TopicRepositoryImpl : TopicRepository {
                 listOf("Doctor Strange", "Shang-Chi", "Black Widow", "Scarlet Witch"), 0)
         )
 
-        val hpQuestions = listOf(
+        val hpQuestions = mutableListOf(
             Quiz("What is the name of the school that Harry Potter attends?",
                 listOf(
                     "Beauxbatons Academy of Magic",
@@ -61,15 +64,15 @@ class TopicRepositoryImpl : TopicRepository {
                 listOf("Severus Snape", "Gellert Grindelwald", "Voldemort", "Bellatrix Lestrange"), 2)
         )
 
-        topics = listOf(
+        topics = mutableListOf(
             Topic(MATH, "Test your math skills with these challenges.",
-                "This quiz will test you on some basic math knowledge and test your problem-solving abilities.", mathQuestions),
+                "This quiz will test you on some basic math knowledge and test your problem-solving abilities.", mathQuestions, R.drawable.math_icon),
             Topic(PHYSICS, "Test your knowledge of physics fundamentals.",
-                "This quiz will test you on some physics fundamentals and test your problem-solving abilities.", physicsQuestions),
+                "This quiz will test you on some physics fundamentals and test your problem-solving abilities.", physicsQuestions, R.drawable.physics_icon),
             Topic(MARVEL, "Dive into the Marvel Universe with your favorite heroes.",
-                "This quiz will test your knowledge of the Marvel Universe and the super heroes that work to protect it.", marvelQuestions),
+                "This quiz will test your knowledge of the Marvel Universe and the super heroes that work to protect it.", marvelQuestions, R.drawable.marvel_icon),
             Topic(HP, "Dive into the magical wizarding world.",
-                "This quiz will test you on your knowledge of the Harry Potter series and the wizarding realm.", hpQuestions)
+                "This quiz will test you on your knowledge of the Harry Potter series and the wizarding realm.", hpQuestions, R.drawable.hp_icon)
         )
     }
 
@@ -81,4 +84,15 @@ class TopicRepositoryImpl : TopicRepository {
         return topics[topicIndex]
     }
 
+    override fun getQuiz(topicIndex: Int, quizIndex: Int): Quiz {
+        return topics[topicIndex].questions[quizIndex]
+    }
+
+    override fun saveTopic(newTopic: Topic) {
+        topics.add(newTopic)
+    }
+
+    override fun saveQuiz(topicIndex: Int, newQuiz: Quiz) {
+        topics[topicIndex].questions.add(newQuiz)
+    }
 }
