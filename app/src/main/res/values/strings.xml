@@ -13,5 +13,7 @@
     <string name="current_score">You have %d out of %d correct so far.</string>
     <string name="final_score">Great job! You have reached the end of the quiz.\nYou got %d out of %d correct!</string>
 
+    <string name="common_description_msg">Good luck!\n\nTotal Questions:</string>
+
     <string name="next_finish_btn_description">Next button if there are more questions, Finish button if last question is reached.</string>
 </resources>

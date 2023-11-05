@@ -22,7 +22,8 @@ class QuestionActivity : AppCompatActivity() {
         val questionCount = findViewById<TextView>(R.id.qPageQuestionCount)
         val questionText = findViewById<TextView>(R.id.qPageQuestion)
 
-        val selectedTopic = intent?.extras?.getSerializable(TOPIC_EXTRA) as Topic
+        val selectedTopicIndex = intent?.extras?.getInt(TOPIC_INDEX_EXTRA) as Int
+        val selectedTopic = QuizApp.getInstance().getTopicRepository().getTopic(selectedTopicIndex)
         val currentQuestionNum = intent?.extras?.getInt(QUESTION_NUM_EXTRA) as Int
         val numCorrectAnswers = intent?.extras?.getInt(CORRECT_NUM_EXTRA) as Int
 
@@ -60,7 +61,7 @@ class QuestionActivity : AppCompatActivity() {
         btnSubmit.setOnClickListener {
             val context = it.context
             val intent = Intent(context, AnswerActivity::class.java)
-            intent.putExtra(TOPIC_EXTRA, selectedTopic)
+            intent.putExtra(TOPIC_INDEX_EXTRA, selectedTopicIndex)
             intent.putExtra(QUESTION_NUM_EXTRA, currentQuestionNum)
             intent.putExtra(CORRECT_NUM_EXTRA, numCorrectAnswers)
             intent.putExtra(SELECTION_OPTION_EXTRA, selectedAnswer)

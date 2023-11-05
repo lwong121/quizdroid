@@ -17,18 +17,19 @@ class OverviewActivity : AppCompatActivity() {
         val title = findViewById<TextView>(R.id.topic)
         val description = findViewById<TextView>(R.id.description)
 
-        val selectedTopic = intent?.extras?.getSerializable(TOPIC_EXTRA) as Topic
+        val selectedTopicIndex = intent?.extras?.getInt(TOPIC_INDEX_EXTRA) as Int
+        val selectedTopic = QuizApp.getInstance().getTopicRepository().getTopic(selectedTopicIndex)
         Log.i(TAG, "OverviewActivity Topic: $selectedTopic")
 
-        title.text = selectedTopic.name
-        description.text = selectedTopic.description
+        title.text = selectedTopic.title
+        description.text = "${selectedTopic.longDescription} ${getString(R.string.common_description_msg)} ${selectedTopic.questions.size}"
 
         // add event listener to button
         val btnBegin = findViewById<Button>(R.id.btnBegin)
         btnBegin.setOnClickListener {
             val context = it.context
             val intent = Intent(context, QuestionActivity::class.java)
-            intent.putExtra(TOPIC_EXTRA, selectedTopic)
+            intent.putExtra(TOPIC_INDEX_EXTRA, selectedTopicIndex)
             intent.putExtra(QUESTION_NUM_EXTRA, 0)
             intent.putExtra(CORRECT_NUM_EXTRA, 0)
             context.startActivity(intent)
