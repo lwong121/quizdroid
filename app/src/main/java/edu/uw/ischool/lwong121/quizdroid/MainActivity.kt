@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // get all the topics from QuizApp
-        val topics = QuizApp.getInstance().getTopicRepository().getTopics()
+        val topics = (application as QuizApp).getTopicRepository().getTopics()
         Log.i(TAG, topics.toString())
 
         // create list of topics to take the quiz on

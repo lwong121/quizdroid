@@ -20,7 +20,7 @@ class OverviewActivity : AppCompatActivity() {
         val description = findViewById<TextView>(R.id.description)
 
         val selectedTopicIndex = intent?.extras?.getInt(TOPIC_INDEX_EXTRA) as Int
-        val selectedTopic = QuizApp.getInstance().getTopicRepository().getTopic(selectedTopicIndex)
+        val selectedTopic = (application as QuizApp).getTopicRepository().getTopic(selectedTopicIndex)
         Log.i(TAG, "OverviewActivity Topic: $selectedTopic")
 
         image.setImageResource(selectedTopic.iconId)

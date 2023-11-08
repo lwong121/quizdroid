@@ -18,8 +18,9 @@ class AnswerActivity : AppCompatActivity() {
         val questionText = findViewById<TextView>(R.id.aPageQuestion)
 
         val selectedTopicIndex = intent?.extras?.getInt(TOPIC_INDEX_EXTRA) as Int
-        val topicRepository = QuizApp.getInstance().getTopicRepository()
+        val topicRepository = (application as QuizApp).getTopicRepository()
         val selectedTopic = topicRepository.getTopic(selectedTopicIndex)
+
         val selectedOptionNum = intent?.extras?.getInt(SELECTION_OPTION_EXTRA) as Int
         var currentQuestionNum = intent?.extras?.getInt(QUESTION_NUM_EXTRA) as Int
 
