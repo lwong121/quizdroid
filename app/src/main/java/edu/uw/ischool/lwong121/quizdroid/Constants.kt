@@ -13,3 +13,13 @@ const val MATH = "Math"
 const val PHYSICS = "Physics"
 const val MARVEL = "Marvel Super Heroes"
 const val HP = "Harry Potter"
+
+// PREFERENCE CONSTANTS
+const val PREFS = "prefs"
+const val PREF_URL = "pref_url"
+const val PREF_INTERVAL = "pref_interval"
+const val DEFAULT_URL = "http://tednewardsandbox.site44.com/questions.json"
+const val CUSTOM_URL = "https://raw.githubusercontent.com/lwong121/quizdroid-data/main/quizdroid-questions.json"
+const val DEFAULT_INTERVAL = 60
+const val DEFAULT_DATA_REL_PATH = "/Android/data/edu.uw.ischool.lwong121.quizdroid/questions.json"
+const val CUSTOM_DATA_REL_PATH = "/Android/data/edu.uw.ischool.lwong121.quizdroid/quizdroid-questions.json"

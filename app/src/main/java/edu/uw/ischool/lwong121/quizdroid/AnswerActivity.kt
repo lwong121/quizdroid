@@ -29,7 +29,7 @@ class AnswerActivity : AppCompatActivity() {
 
         val totalQuestions = selectedTopic.questions.size
         questionCount.text = getString(R.string.question_count, currentQuestionNum + 1, totalQuestions)
-        questionText.text = currentQuestion.question
+        questionText.text = currentQuestion.text
 
         // add the answer options
         val option1 = findViewById<RadioButton>(R.id.aPageOption1)
@@ -37,10 +37,10 @@ class AnswerActivity : AppCompatActivity() {
         val option3 = findViewById<RadioButton>(R.id.aPageOption3)
         val option4 = findViewById<RadioButton>(R.id.aPageOption4)
 
-        option1.text = currentQuestion.options[0]
-        option2.text = currentQuestion.options[1]
-        option3.text = currentQuestion.options[2]
-        option4.text = currentQuestion.options[3]
+        option1.text = currentQuestion.answers[0]
+        option2.text = currentQuestion.answers[1]
+        option3.text = currentQuestion.answers[2]
+        option4.text = currentQuestion.answers[3]
 
         option1.isEnabled = false
         option2.isEnabled = false
@@ -57,7 +57,7 @@ class AnswerActivity : AppCompatActivity() {
 
         selectedOption.isChecked = true
 
-        val correctAnswerNum = currentQuestion.correctAnswer
+        val correctAnswerNum = currentQuestion.answer
         val correctAnswer = when (correctAnswerNum) {
             0 -> option1
             1 -> option2

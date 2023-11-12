@@ -33,7 +33,7 @@ class QuestionActivity : AppCompatActivity() {
         Log.i(TAG, "QuestionActivity current question: $currentQuestion")
 
         questionCount.text = getString(R.string.question_count, currentQuestionNum + 1, selectedTopic.questions.size)
-        questionText.text = currentQuestion.question
+        questionText.text = currentQuestion.text
 
         // add the answer options
         val optionGroup = findViewById<RadioGroup>(R.id.qPageRadioGroup)
@@ -42,10 +42,10 @@ class QuestionActivity : AppCompatActivity() {
         val option3 = findViewById<RadioButton>(R.id.qPageOption3)
         val option4 = findViewById<RadioButton>(R.id.qPageOption4)
 
-        option1.text = currentQuestion.options[0]
-        option2.text = currentQuestion.options[1]
-        option3.text = currentQuestion.options[2]
-        option4.text = currentQuestion.options[3]
+        option1.text = currentQuestion.answers[0]
+        option2.text = currentQuestion.answers[1]
+        option3.text = currentQuestion.answers[2]
+        option4.text = currentQuestion.answers[3]
 
         var selectedAnswer: Int = -1
         optionGroup.setOnCheckedChangeListener { _, checkedId ->

@@ -16,4 +16,11 @@
     <string name="common_description_msg">Good luck!\n\nTotal Questions:</string>
 
     <string name="next_finish_btn_description">Next button if there are more questions, Finish button if last question is reached.</string>
+
+    <string name="preferences">Preferences</string>
+    <string name="url_placeholder">URL for question data</string>
+    <string name="check_download_placeholder">Check new downloads every __ mins</string>
+    <string name="save_preferences">Save Preferences</string>
+
+    <string name="quizdroid">Quizdroid</string>
 </resources>

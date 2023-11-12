@@ -15,7 +15,7 @@ class OverviewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_overview)
 
         // add the topic image, title, and description
-        val image = findViewById<ImageView>(R.id.overviewImage)
+//        val image = findViewById<ImageView>(R.id.overviewImage)
         val title = findViewById<TextView>(R.id.topic)
         val description = findViewById<TextView>(R.id.description)
 
@@ -23,9 +23,9 @@ class OverviewActivity : AppCompatActivity() {
         val selectedTopic = (application as QuizApp).getTopicRepository().getTopic(selectedTopicIndex)
         Log.i(TAG, "OverviewActivity Topic: $selectedTopic")
 
-        image.setImageResource(selectedTopic.iconId)
+//        image.setImageResource(selectedTopic.iconId)
         title.text = selectedTopic.title
-        description.text = "${selectedTopic.longDescription} ${getString(R.string.common_description_msg)} ${selectedTopic.questions.size}"
+        description.text = "${selectedTopic.desc} ${getString(R.string.common_description_msg)} ${selectedTopic.questions.size}"
 
         // add event listener to button
         val btnBegin = findViewById<Button>(R.id.btnBegin)

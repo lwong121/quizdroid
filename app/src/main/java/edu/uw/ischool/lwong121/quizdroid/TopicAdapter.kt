@@ -18,14 +18,14 @@ class TopicAdapter(context: Context, private val topics: List<Topic>)
         Log.i(TAG, "Topic Adapter: getView() called")
         val view = super.getView(position, convertView, parent)
 
-        val icon : ImageView = view.findViewById(R.id.iconImageView)
+//        val icon : ImageView = view.findViewById(R.id.iconImageView)
         val titleText : TextView = view.findViewById(R.id.topicTitle)
         val descriptionText : TextView = view.findViewById(R.id.topicDescription)
 
         Log.i(TAG, "Topic Adapter: topic = ${topics[position]}")
-        icon.setImageResource(topics[position].iconId)
+//        icon.setImageResource(topics[position].iconId)
         titleText.text = topics[position].title
-        descriptionText.text = topics[position].shortDescription
+        descriptionText.text = topics[position].desc
 
         return view
     }
