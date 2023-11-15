@@ -35,6 +35,8 @@ class PreferencesActivity : AppCompatActivity() {
             prefsEdit.putInt(PREF_INTERVAL, interval)
             prefsEdit.commit()
 
+            // likely need to add some downloading functionality here for the next HW
+
             Log.i(TAG, "PreferencesActivity: Preferences saved... url = $url, interval = $interval")
 
             // once prefs are updated, go back to main activity

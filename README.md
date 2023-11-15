@@ -8,4 +8,4 @@ The application should provide a "Preferences" action bar item that brings up a 
 
 ## Extra Credit
 My custom JSON file can be found here: https://raw.githubusercontent.com/lwong121/quizdroid-data/main/quizdroid-questions.json
-Screenshots can be found in the screeshots directory.
+All the screenshots can be found in the /screenshots directory.
