@@ -24,15 +24,11 @@ class TopicRepositoryImpl : TopicRepository {
     private var topics: MutableList<Topic>
 
     init {
-        // likely useful in next HW
-//        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-//        val prefUrl = prefs.getString(PREF_URL, DEFAULT_URL)
-//        val prefInterval = prefs.getInt(PREF_INTERVAL, DEFAULT_INTERVAL).toString()
-
+        // for me, this was: /storage/emulated/0/Android/data/edu.uw.ischool.lwong121.quizdroid/questions.json
         val filePath = "${Environment.getExternalStorageDirectory()}$DEFAULT_DATA_REL_PATH"
 
         // Extra credit version
-//        val filePath = "${Environment.getExternalStorageDirectory()}$CUSTOM_DATA_REL_PATH"
+        // val filePath = "${Environment.getExternalStorageDirectory()}$CUSTOM_DATA_REL_PATH"
 
         Log.i(TAG, "TopicRepository: file stored at $filePath")
 

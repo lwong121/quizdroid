@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Only have the toolbar on the topics page
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
