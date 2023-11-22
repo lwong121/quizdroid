@@ -93,7 +93,7 @@ class AnswerActivity : AppCompatActivity() {
                 intent.putExtra(QUESTION_NUM_EXTRA, currentQuestionNum)
                 intent.putExtra(CORRECT_NUM_EXTRA, numCorrectAnswers)
                 context.startActivity(intent)
-            }
+             }
         } else {
             // quiz is over
             score.text = getString(R.string.final_score, numCorrectAnswers, currentQuestionNum + 1)
@@ -102,6 +102,7 @@ class AnswerActivity : AppCompatActivity() {
             btnNext.setOnClickListener {
                 val context = it.context
                 val intent = Intent(context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 context.startActivity(intent)
             }
         }

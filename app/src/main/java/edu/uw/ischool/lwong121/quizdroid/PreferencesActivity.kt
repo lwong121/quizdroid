@@ -42,7 +42,10 @@ class PreferencesActivity : AppCompatActivity() {
             // once prefs are updated, go back to main activity
             val context = it.context
             val intent = Intent(context, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             context.startActivity(intent)
+
+            finish()
         }
     }
 }

@@ -4,9 +4,12 @@ import android.os.Environment
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.File
 import java.io.FileReader
+import java.io.FileWriter
 
 interface TopicRepository {
+    fun updateData()
     fun getTopics(): List<Topic>
     fun getTopic(topicIndex: Int): Topic
     fun getQuiz(topicIndex: Int, quizIndex: Int): Quiz
@@ -20,18 +23,24 @@ data class Topic(var title: String, var desc: String, var questions: MutableList
 
 data class Quiz(var text: String, var answers: List<String>, var answer: Int)
 
-class TopicRepositoryImpl : TopicRepository {
-    private var topics: MutableList<Topic>
+class TopicRepositoryImpl() : TopicRepository {
+    private var topics: MutableList<Topic> = mutableListOf()
+    private val filePath = "${Environment.getExternalStorageDirectory()}$DEFAULT_DATA_REL_PATH$DEFAULT_FILE_NAME"
 
     init {
-        // for me, this was: /storage/emulated/0/Android/data/edu.uw.ischool.lwong121.quizdroid/questions.json
-        val filePath = "${Environment.getExternalStorageDirectory()}$DEFAULT_DATA_REL_PATH"
-
-        // Extra credit version
-        // val filePath = "${Environment.getExternalStorageDirectory()}$CUSTOM_DATA_REL_PATH"
-
+        val file = File(filePath)
         Log.i(TAG, "TopicRepository: file stored at $filePath")
+        if (!file.exists()) {
+            // cannot do here, no permissions on initial startup
+//            val fileWriter = FileWriter(filePath)
+//            fileWriter.write("[]")
+//            fileWriter.close()
+        } else {
+            readDataFile()
+        }
+    }
 
+    private fun readDataFile() {
         FileReader(filePath).use {
             val text = it.readText()
 
@@ -51,6 +60,10 @@ class TopicRepositoryImpl : TopicRepository {
 
             Log.i(TAG, "TopicRepository: read the data the file, topics: $topics")
         }
+    }
+
+    override fun updateData() {
+        readDataFile()
     }
 
     override fun getTopics(): List<Topic> {
